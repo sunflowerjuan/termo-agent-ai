@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, type ReactNode } from "react";
 
-export type Language = "es" | "en"
+export type Language = "es" | "en";
 
 type Translations = {
-  [key: string]: { es: string; en: string }
-}
+  [key: string]: { es: string; en: string };
+};
 
 export const translations: Translations = {
   title: {
@@ -102,8 +102,8 @@ export const translations: Translations = {
     en: "I only answer questions related to thermodynamic tables.",
   },
   author: {
-    es: "Desarrollado por Sara Sofia Vargas Sanabria",
-    en: "Developed by Sara Sofia Vargas Sanabria",
+    es: "Concepto Diseñado por Sara Sofia Vargas Sanabria",
+    en: "Make by Sara Sofia Vargas Sanabria",
   },
   university: {
     es: "Universidad Industrial de Santander (UIS)",
@@ -129,34 +129,36 @@ export const translations: Translations = {
     es: "Cerrar",
     en: "Close",
   },
-}
+};
 
 type LanguageContextType = {
-  language: Language
-  setLanguage: (lang: Language) => void
-  t: (key: string) => string
-}
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+};
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("es")
+  const [language, setLanguage] = useState<Language>("es");
 
   const t = (key: string): string => {
-    return translations[key]?.[language] ?? key
-  }
+    return translations[key]?.[language] ?? key;
+  };
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
+  const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider")
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
-  return context
+  return context;
 }
