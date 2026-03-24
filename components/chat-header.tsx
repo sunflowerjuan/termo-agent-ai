@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Github, Instagram } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import {
   RotateCcw,
@@ -15,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+
 export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
   const { setTheme, theme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
@@ -43,8 +45,9 @@ export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
           aria-label={t("settings")}
         >
           <div className="flex items-center justify-center shrink-0">
-            <Image src="/logo.png" alt="TERMO-AGENT" width={50} height={50} />
+            <Image src="/logo.png" alt="TERMO-AGENT" width={55} height={55} />
           </div>
+
           <div className="min-w-0 text-left">
             <div className="flex items-center gap-1">
               <h1 className="text-sm sm:text-base font-semibold text-card-foreground tracking-tight font-mono truncate">
@@ -118,7 +121,7 @@ export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
                     : "bg-secondary text-secondary-foreground border-border hover:bg-accent",
                 )}
               >
-                {"ES - Espanol"}
+                ES - Español
               </button>
               <button
                 type="button"
@@ -154,6 +157,7 @@ export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
                 <Sun className="w-4 h-4" />
                 {t("light")}
               </button>
+
               <button
                 type="button"
                 onClick={() => setTheme("dark")}
@@ -167,6 +171,7 @@ export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
                 <Moon className="w-4 h-4" />
                 {t("dark")}
               </button>
+
               <button
                 type="button"
                 onClick={() => setTheme("system")}
@@ -183,11 +188,32 @@ export function ChatHeader({ onNewChat }: { onNewChat: () => void }) {
             </div>
           </div>
 
-          {/* Author info */}
-          <div className="pt-2 border-t border-border">
-            <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
+          {/* Author + Social */}
+          <div className="pt-3 border-t border-border">
+            <p className="text-[10px] text-muted-foreground text-center leading-relaxed mb-2">
               {t("author")} {" · "} {t("university")}
             </p>
+
+            <div className="flex items-center justify-center gap-10">
+              <a
+                href="https://www.instagram.com/saravargas_22?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Instagram className="w-10 h-10" />
+              </a>
+              <a
+                href="https://github.com/sunflowerjuan"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Github className="w-10 h-10" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # TERMO-AGENT — Thermodynamic Tables AI Assistant
 
-![logo](public\logo.png)
+![logo](public/logo.png)
 
 TERMO-AGENT es un agente de inteligencia artificial especializado en **tablas termodinámicas**, capaz de responder consultas técnicas con precisión, utilizando datos provenientes de tablas reales y citando las fuentes correspondientes.
 
